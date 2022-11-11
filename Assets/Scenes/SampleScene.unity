@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156538191}
+  - component: {fileID: 156538192}
   m_Layer: 0
   m_Name: Circle Generator Zone
   m_TagString: Untagged
@@ -154,6 +155,21 @@ Transform:
   m_Father: {fileID: 237991771}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156538192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156538190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116159dbe040f774d8831f1eaec28a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _circle: {fileID: 4293439841469920811, guid: f3995e06c4f8b9c489b3695058627ba3, type: 3}
+  _radius: 1
+  _width: 9
 --- !u!1 &237991770
 GameObject:
   m_ObjectHideFlags: 0
