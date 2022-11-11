@@ -29,6 +29,13 @@ public class Circle : MonoBehaviour
         setRandomColor();
         setRandomSize();
         setRandomPosition();
+        setCircleSpeed();
+    }
+
+    private void setCircleSpeed()
+    {
+        float sumMaxMinSize = _maxSize + _minSize;
+        _speed = sumMaxMinSize - _radius;
     }
 
     private void setRandomPosition()
