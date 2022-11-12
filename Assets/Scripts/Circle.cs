@@ -12,6 +12,9 @@ public class Circle : MonoBehaviour
     [Range(0.1f, 1f)]
     [SerializeField] private float _minSize = 0.25f;
 
+    [Header("Points")]
+    [SerializeField] private float _minPointsReceive = 1f;
+
     private float _radius = 1f;
 
     private Rigidbody2D _rigidbody;
@@ -22,6 +25,8 @@ public class Circle : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _transform = _rigidbody.transform;
+
+        EventManager.OnClickOnCircle.AddListener(AddPointsToPlayer);
     }
 
     private void Start()
@@ -68,5 +73,11 @@ public class Circle : MonoBehaviour
     {
         Vector2 velocity = Vector2.down;
         _rigidbody.MovePosition(_rigidbody.position + velocity * _speed * Time.fixedDeltaTime);
+    }
+
+    private void AddPointsToPlayer()
+    {
+        int amountToAdd = (int)Mathf.Round((_maxSize+_minSize) - _radius);
+        PlayerStats.AddAmountPoints(amountToAdd);
     }
 }
