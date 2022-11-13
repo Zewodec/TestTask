@@ -9,6 +9,7 @@ public class Circle : MonoBehaviour
     [Header("Size of Circle")]
     [Range(1f, 3f)]
     [SerializeField] private float _maxSize = 3f;
+
     [Range(0.1f, 1f)]
     [SerializeField] private float _minSize = 0.25f;
 
@@ -60,7 +61,7 @@ public class Circle : MonoBehaviour
 
     private void setRandomColor()
     {
-        Color newColor = new Color(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        Color newColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         _spriteRenderer.color = newColor;
     }
 
@@ -77,7 +78,7 @@ public class Circle : MonoBehaviour
 
     private void AddPointsToPlayer()
     {
-        int amountToAdd = (int)Mathf.Round((_maxSize+_minSize) - _radius);
+        int amountToAdd = (int)Mathf.Round((_maxSize + _minSize) - _radius);
         PlayerStats.AddAmountPoints(amountToAdd);
     }
 }

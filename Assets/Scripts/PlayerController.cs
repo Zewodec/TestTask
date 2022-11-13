@@ -1,10 +1,8 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {

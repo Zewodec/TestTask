@@ -14,4 +14,9 @@ public class PlayerStats
     {
         return points;
     }
+
+    public static void resetPoints()
+    {
+        points = 0;
+    }
 }
