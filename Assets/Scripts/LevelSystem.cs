@@ -10,6 +10,7 @@ public class LevelSystem : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private TMP_Text _levelText;
+    [SerializeField] private BackgroundLoader _backgroundLoader;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class LevelSystem : MonoBehaviour
         _level++;
         ChangeLevelText();
         _pointsToChangeLevel += 5;
+        _backgroundLoader.nextBackground();
     }
 
     private void ChangeLevelText()
