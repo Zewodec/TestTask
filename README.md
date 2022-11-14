@@ -1,4 +1,4 @@
-# PattersonApps-TestTask
+# TestTask
 Test Task for Junior Unity Developer
 
 # Build for Standelone, Android, IOS:
