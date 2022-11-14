@@ -22,6 +22,9 @@ public class ManagmentUI : MonoBehaviour
 
     #region Buttons Action
 
+    /// <summary>
+    /// Click on start button.
+    /// </summary>
     private void OnStartClick()
     {
         ChangeVisibilityUI();
@@ -31,6 +34,9 @@ public class ManagmentUI : MonoBehaviour
         TimerStart();
     }
 
+    /// <summary>
+    /// Click on stop button
+    /// </summary>
     private void OnStopClick()
     {
         ChangeVisibilityUI();
@@ -51,6 +57,9 @@ public class ManagmentUI : MonoBehaviour
         StopAllCoroutines();
     }
 
+    /// <summary>
+    /// Timer Update
+    /// </summary>
     private IEnumerator TimerUpdate()
     {
         int hours = 0, minutes = 0, seconds = 0;
@@ -76,6 +85,9 @@ public class ManagmentUI : MonoBehaviour
     }
     #endregion Timer
 
+    /// <summary>
+    /// Change visibility of UI items.
+    /// </summary>
     private void ChangeVisibilityUI()
     {
         titleText.gameObject.SetActive(!_flagVisibleUI);
@@ -86,6 +98,9 @@ public class ManagmentUI : MonoBehaviour
         _flagVisibleUI = !_flagVisibleUI;
     }
 
+    /// <summary>
+    /// Update player's score.
+    /// </summary>
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + PlayerStats.getPoints();
