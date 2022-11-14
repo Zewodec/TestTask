@@ -16,6 +16,9 @@ public class BackgroundLoader : MonoBehaviour
         LoadAndSetBackgrounds();
     }
 
+    /// <summary>
+    /// When method called, id of background change and load the image.
+    /// </summary>
     public void nextBackground()
     {
         if (_backgroundIndex == 4)
@@ -28,6 +31,9 @@ public class BackgroundLoader : MonoBehaviour
         setBackground();
     }
 
+    /// <summary>
+    /// Set sprite to sprite renderer.
+    /// </summary>
     private void setBackground()
     {
         Sprite backgroundLoaded = bundle.LoadAsset<Sprite>(bundle.GetAllAssetNames()[_backgroundIndex]);
@@ -38,8 +44,11 @@ public class BackgroundLoader : MonoBehaviour
     {
         StartCoroutine(LoadBackground());
     }
-
-    IEnumerator LoadBackground()
+    /// <summary>
+    /// Load bundle from personal web server.
+    /// Set first sprite to background.
+    /// </summary>
+    private IEnumerator LoadBackground()
     {
         string assetBundleName = "background";
         string uri = "http://muniverse.ga/AssetBundles/" + assetBundleName;
