@@ -38,6 +38,8 @@ public class BackgroundLoader : MonoBehaviour
     {
         Sprite backgroundLoaded = bundle.LoadAsset<Sprite>(bundle.GetAllAssetNames()[_backgroundIndex]);
         _spriteRenderer.sprite = backgroundLoaded;
+        _spriteRenderer.gameObject.SetActive(false);
+        _spriteRenderer.gameObject.SetActive(true);
     }
 
     private void LoadAndSetBackgrounds()
@@ -51,7 +53,14 @@ public class BackgroundLoader : MonoBehaviour
     private IEnumerator LoadBackground()
     {
         string assetBundleName = "background";
-        string uri = "http://muniverse.ga/AssetBundles/" + assetBundleName;
+        string uri = "http://muniverse.ga/AssetBundles/";
+#if UNITY_STANDALONE
+        uri += "StandaloneWindows/" + assetBundleName;
+#elif UNITY_ANDROID
+        uri += "Android/" + assetBundleName;
+#elif UNITY_IOS
+        uri += "Android/" + assetBundleName;
+#endif
         UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri, 0);
         yield return request.SendWebRequest();
         bundle = DownloadHandlerAssetBundle.GetContent(request);
