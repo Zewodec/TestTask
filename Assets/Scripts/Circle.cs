@@ -6,15 +6,14 @@ public class Circle : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _widthSpawnPostion = 9f;
 
+    private static float _levelSpeedBonus = 0f;
+
     [Header("Size of Circle")]
     [Range(1f, 3f)]
     [SerializeField] private float _maxSize = 3f;
 
     [Range(0.1f, 1f)]
     [SerializeField] private float _minSize = 0.25f;
-
-    [Header("Points")]
-    [SerializeField] private float _minPointsReceive = 1f;
 
     private float _radius = 1f;
 
@@ -32,16 +31,38 @@ public class Circle : MonoBehaviour
 
     private void Start()
     {
+        EventManager.OnLevelChange.AddListener(OnLevelChangeDecreaseMaxSize);
+        EventManager.OnLevelChange.AddListener(OnLevelChangeIncreaseSpeed);
+
         setRandomColor();
         setRandomSize();
         setRandomPosition();
         setCircleSpeed();
     }
 
+    private void FixedUpdate()
+    {
+        MoveCircleDown();
+    }
+
+    private void OnLevelChangeDecreaseMaxSize()
+    {
+        if (_maxSize > _minSize)
+        {
+            _maxSize -= 0.25f;
+        }
+    }
+
+    private void OnLevelChangeIncreaseSpeed()
+    {
+        _levelSpeedBonus += 0.25f;
+    }
+
+    #region Start sets for Circle
     private void setCircleSpeed()
     {
         float sumMaxMinSize = _maxSize + _minSize;
-        _speed = sumMaxMinSize - _radius;
+        _speed = sumMaxMinSize - _radius + _levelSpeedBonus;
     }
 
     private void setRandomPosition()
@@ -65,10 +86,7 @@ public class Circle : MonoBehaviour
         _spriteRenderer.color = newColor;
     }
 
-    private void FixedUpdate()
-    {
-        MoveCircleDown();
-    }
+    #endregion Start sets for Circle
 
     private void MoveCircleDown()
     {

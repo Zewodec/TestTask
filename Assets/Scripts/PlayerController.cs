@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
                 DestroyCircle(hit.collider);
             }
         }
-    }
+    }    
 
     private void DestroyCircle(Collider2D collider)
     {

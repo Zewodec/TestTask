@@ -17,6 +17,31 @@ public class GenerateCircles : MonoBehaviour
     private void Start()
     {
         _spawnPosition.y = gameObject.transform.position.y;
+        EventManager.OnLevelChange.AddListener(OnLevelChangeDecreaseDelay);
+    }
+
+    private void OnLevelChangeDecreaseDelay()
+    {
+        if (_minDelayTime > 0.15f)
+        {
+            _minDelayTime -= 0.2f;
+        }
+
+        if (_maxDelayTime > 0.5f)
+        {
+            _maxDelayTime -= 0.2f;
+        }
+    }
+
+    #region Spawn Circle Process
+    private void OnEnable()
+    {
+        StartCoroutine(SpawnCircle());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(SpawnCircle());
     }
 
     private IEnumerator SpawnCircle()
@@ -27,14 +52,5 @@ public class GenerateCircles : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(_minDelayTime, _maxDelayTime));
         }
     }
-
-    private void OnEnable()
-    {
-        StartCoroutine(SpawnCircle());
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(SpawnCircle());
-    }
+    #endregion Spawn Circle Process
 }

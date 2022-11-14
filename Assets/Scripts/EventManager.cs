@@ -5,10 +5,16 @@ public class EventManager : MonoBehaviour
 {
     public static readonly UnityEvent OnClickOnCircle = new();
     public static readonly UnityEvent OnUpdateTextUI = new();
+    public static readonly UnityEvent OnLevelChange = new();
 
     public static void SendOnClickOnCircle()
     {
         OnClickOnCircle.Invoke();
         OnUpdateTextUI.Invoke();
+    }
+
+    public static void SendOnLevelChange()
+    {
+        OnLevelChange.Invoke();
     }
 }
